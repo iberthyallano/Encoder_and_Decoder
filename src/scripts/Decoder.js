@@ -1,3 +1,5 @@
+const ManipulateFiles = require("./ManipulateFiles");
+
 function Decoder(tree, text){ 
     let result = '';  
     let aux_tree = tree;  
@@ -15,8 +17,10 @@ function Decoder(tree, text){
             aux_tree = tree;
         }  
     }  
-    
-    return result;  
+
+    const files = new ManipulateFiles;
+    files.setText("text3.txt", result);
+
 }
 
 module.exports =  Decoder;

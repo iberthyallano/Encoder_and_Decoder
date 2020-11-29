@@ -1,5 +1,5 @@
 function Tree(tuples){
-    while(tuples.length>1) {  
+    while(tuples.length > 1) {  
         let leastTwo = [tuples[0][1],tuples[1][1]]  
      
         let theRest = tuples.slice(2,tuples.length);  
@@ -26,6 +26,8 @@ function CreateCode(node, pat = '', code = {}){
     return code;
 }
 
+const ManipulateFiles = require("./ManipulateFiles");
+
 function Encoder(text){
     text = text.split("");
 
@@ -51,7 +53,9 @@ function Encoder(text){
         result += code[text[k]]; 
     }
 
-    return [result, tree];
+    const files = new ManipulateFiles;
+    files.setText("text2.txt", result);
+    files.setText("tree.json", JSON.stringify(tree));
 } 
 
 module.exports =  Encoder;
