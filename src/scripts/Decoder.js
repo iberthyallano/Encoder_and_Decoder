@@ -1,7 +1,4 @@
-// const BinaryTree  = require("./BinaryTree");
-
-function Decoder(tree){
-    // let tree = new BinaryTree;
+function Decoder(tree, text){
     return "Decoder";
 }
 
