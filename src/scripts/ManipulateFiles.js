@@ -8,14 +8,9 @@ class ManipulateFiles{
         return this.fsnp.readFileSync(`./src/database/${name}`, "utf-8");
     } 
 
-    // getData(name){
-    //     return this.fsnp.readFileSync(`./src/database/${name}.dat`, "utf-8").split("\n").map(Number);
-    // } 
-
-    // setDatas(name, data){
-    //     this.fsnp.writeFileSync(`./src/database/${name[0]}.dat`, data.join('\n'));
-    //     this.fsnp.writeFileSync(`./src/database/${name[1]}.dat`, data.reverse().join('\n'));
-    // } 
+    setText(name, data){
+        this.fsnp.writeFileSync(`./src/database/${name}`, data);
+    } 
 
     // async listFiles(diretorio) {
     //     let listaDeArquivos = await this.fscp.readdir(diretorio);

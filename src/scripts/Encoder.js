@@ -1,4 +1,3 @@
-const { compileFunction } = require("vm");
 const BinaryTree  = require("./BinaryTree");
 
 function Encoder(text){
@@ -20,13 +19,14 @@ function Encoder(text){
         total[i] = cont;
     }
 
+    console.log(text);
     console.log(caracters);
     console.log(total);
     
     /*
-        lê o texto e procurar quantidades de números repetidos;
+        Lê o texto e procurar quantidades de números repetidos;(OKAY)
         Atribuir bits. Levar em conta que quanto maior a quantidade de bits, menor o número de repetições;
-        jogar os bits e letras na árvore;
+        Jogar os bits e letras na árvore;
     */
 
     return tree;

@@ -1,8 +1,8 @@
-class No{
+class Node{
     constructor(data){
-        this.data = data;
-        this.esquerda = null;
-        this.direita = null;
+        this.key = data;
+        this.left = null;
+        this.right = null;
     }
 }
 
@@ -11,107 +11,115 @@ class BinaryTree{
         this.root = null;
     }
 
-    Insercao(data){
-        let novoNo = new No(data);
+    add(data){
+        let new_node = new Node(data);
         
         if (this.root === null){
-            this.root = novoNo;
+            this.root = new_node;
         } else {
-            this.InserirNo(this.root, novoNo);
+            this.addNode(this.root, new_node);
         }
     }
 
-    InserirNo(no, novoNo){
-        if (novoNo.data < no.data){
-            if (no.esquerda === null){
-                no.esquerda = novoNo;
+    addNode(node, new_node){
+        if (new_node.key < node.key){
+            if (node.left === null){
+                node.left = new_node;
             } else {
-                this.InserirNo(no.esquerda, novoNo);
+                this.addNode(node.left, new_node);
             }
         } else {
-            if (no.direita === null){
-                no.direita = novoNo;
+            if (node.right === null){
+                node.right = new_node;
             } else {
-                this.InserirNo(no.direita, novoNo);
+                this.addNode(node.right, new_node);
             }
         }
     }
 
-    Remover(data){
-        this.root = this.RemoverNo(this.root, data);
+    remove(data){
+        this.root = this.removeNode(this.root, data);
     }
 
-    RemoverNo(no, key){
-        if (no === null){
+    removeNode(node, data){
+        if (node === null){
             return null;
-        } else if (key > no.data){
-            no.direita = this.RemoverNo(no.direita, key);
-            return no;
+        } else if (data > node.key){
+            node.right = this.removeNode(node.right, data);
+            return node;
         } else {
-            if (no.esquerda === null && no.direita === null){
-                no = null;
-                return no;
+            if (node.left === null && node.right === null){
+                node = null;
+                return node;
             } 
-            if(no.esquerda === null){
-                no = no.direita;
-                return no;
-            } else if (no.direita === null){
-                no = no.esquerda;
-                return no;
+            if(node.left === null){
+                node = node.right;
+                return node;
+            } else if (node.right === null){
+                node = node.left;
+                return node;
             }
-            let aux = this.EncontrarMenorNo(no.direita);
-            no.data = aux.data;
-            no.direita = this.RemoverNo(no.direita, aux.data);
-            return no;
+            let aux = this.findSmallestNode(node.right);
+            node.key = aux.key;
+            node.right = this.removeNode(node.right, aux.key);
+            return node;
         }
     }
 
-    EmOrdem(no){
-        if (no !== null){
-            this.EmOrdem(no.esquerda);
-            console.log(no.data);
-            this.EmOrdem(no.direita);
+    inOrder(node){
+        if (node !== null){
+            this.inOrder(node.left);
+            console.log(node.key);
+            this.inOrder(node.right);
         }
     }
 
-    PreOrdem(no){
-        if (no !== null){
-            console.log(no.data);
-            this.PreOrdem(no.esquerda);
-            this.PreOrdem(no.direita);
+    preOrder(node){
+        if (node !== null){
+            console.log(node.key);
+            this.preOrder(node.left);
+            this.preOrder(node.right);
         }
     }
 
-    PosOrdem(no){
-        if (no !== null){
-            this.PosOrdem(no.esquerda);
-            this.PosOrdem(no.direita);
-            console.log(no.data);
+    posOrder(node){
+        if (node !== null){
+            this.posOrder(node.left);
+            this.posOrder(node.right);
+            console.log(node.key);
         }
     }
 
-    EncontrarMenorNo(no){
-        if (no.esquerda===null){
-            return no;
-        } else {
-            return this.EncontrarMenorNo(no.esquerda);
-        }
-    }
-
-    EncontrarNoRaiz(){
+    findRootNode(){
         return this.root;
     }
 
-    Pesquisar(no, data){
-        if (no === null){
+    findSmallestNode(node){
+        if (node.left===null){
+            return node;
+        } else {
+            return this.findSmallestNode(node.left);
+        }
+    }
+
+    findLargerNode(node){
+        if (node.right===null){
+            return node;
+        } else {
+            return this.findLargerNode(node.right);
+        }
+    }
+
+    search(node, data){
+        if (node === null){
             return null;
         }
-        else if (data < no.data){
-            return this.Pesquisar(no.esquerda, data);
-        } else if (data > no.data){
-            return this.Pesquisar(no.direita, data);
+        else if (data < node.key){
+            return this.search(node.left, data);
+        } else if (data > node.key){
+            return this.search(node.right, data);
         } else {
-            return no;
+            return node;
         }
     }
 

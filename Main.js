@@ -7,17 +7,18 @@
 */
 
 const ManipulateFiles = require("./src/scripts/ManipulateFiles");
+const BinaryTree  = require("./src/scripts/BinaryTree");
 const Encoder = require("./src/scripts/Encoder");
 const Decoder = require("./src/scripts/Decoder");
-//arvore ????
 
 function main(){
-    const files = new ManipulateFiles;
+    // const files = new ManipulateFiles;
+    // const tree = new BinaryTree;
+
     // let text = files.getText("text.txt");
     let text = "bafe abacaa de fa";
 
     Encoder(text);//ENCRIPTA TEXTO E RETORNA ARVORE DE DECODIFICAÇÃO
-
 
     //console.log(Decoder("oioi")); //RECEBE ARVORE DE DECODIFICAÇÃO E DECODIFICA O TEXTO
 }
