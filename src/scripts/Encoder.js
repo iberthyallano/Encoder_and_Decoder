@@ -1,4 +1,30 @@
-const BinaryTree  = require("./BinaryTree");
+function Tree(tuples){
+    while(tuples.length>1) {  
+        let leastTwo = [tuples[0][1],tuples[1][1]]  
+     
+        let theRest = tuples.slice(2,tuples.length);  
+      
+        let combFreq = tuples[0][0]+tuples[1][0];  
+      
+        tuples = theRest;  
+        let end = [combFreq,leastTwo];  
+        tuples.push(end);  
+        
+        tuples.sort();  
+       
+    }  
+    return tuples[0][1];   
+}
+
+function CreateCode(node, pat = '', code = {}){  
+    if(typeof(node) == typeof("")){  
+        code[node] = pat;  
+    }else{  
+        CreateCode(node[0], pat+'0', code);  
+        CreateCode(node[1], pat+'1', code);  
+    }  
+    return code;
+}
 
 function Encoder(text){
     text = text.split("");
@@ -17,15 +43,15 @@ function Encoder(text){
 
     tuples = tuples.sort();
 
-    console.log(tuples);
-    
-    // /*
-    //     Lê o texto e procurar quantidades de números repetidos;(OKAY)
-    //     Atribuir bits. Levar em conta que quanto maior a quantidade de bits, menor o número de repetições;
-    //     Jogar os bits e letras na árvore;
-    // */
+    let tree = Tree(tuples);
+    let code = CreateCode(tree);
 
-    // return tree;
-}
+    let result = '';  
+    for(let k in text){  
+        result += code[text[k]]; 
+    }
+
+    return [result, tree];
+} 
 
 module.exports =  Encoder;
