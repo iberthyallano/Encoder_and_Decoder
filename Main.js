@@ -9,7 +9,7 @@ function main(){
 
     Encoder(text);//ENCRIPTA TEXTO E RETORNA ARVORE DE DECODIFICAÇÃO
 
-    let codeText = files.getText("text2.txt");
+    let codeText = files.getText("text.txt");
     let tree = JSON.parse(files.getText("tree.json"));
  
     Decoder(tree, codeText);  //RECEBE ARVORE DE DECODIFICAÇÃO E DECODIFICA O TEXTO

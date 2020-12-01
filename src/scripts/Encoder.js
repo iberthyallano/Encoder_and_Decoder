@@ -54,7 +54,7 @@ function Encoder(text){
     }
 
     const files = new ManipulateFiles;
-    files.setText("text2.txt", result);
+    files.setText("text.txt", result);
     files.setText("tree.json", JSON.stringify(tree));
 } 
 

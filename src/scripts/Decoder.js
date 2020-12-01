@@ -19,7 +19,7 @@ function Decoder(tree, text){
     }  
 
     const files = new ManipulateFiles;
-    files.setText("text3.txt", result);
+    files.setText("text.txt", result);
 
 }
 
