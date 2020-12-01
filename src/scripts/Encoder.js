@@ -1,6 +1,6 @@
 function Tree(tuples){
     while(tuples.length > 1) {  
-        let leastTwo = [tuples[0][1],tuples[1][1]]  
+        let leastTwo = [tuples[0][1],tuples[1][1]];
      
         let theRest = tuples.slice(2,tuples.length);  
       

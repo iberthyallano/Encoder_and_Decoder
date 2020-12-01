@@ -1,15 +1,14 @@
 class ManipulateFiles{
     constructor(){
-        this.fscp = require('fs').promises;
-        this.fsnp = require('fs');
+        this.fs = require('fs');
     }
 
     getText(name){
-        return this.fsnp.readFileSync(`./src/database/${name}`, "utf-8");
+        return this.fs.readFileSync(`./src/database/${name}`, "utf-8");
     } 
 
     setText(name, data){
-        this.fsnp.writeFileSync(`./src/database/${name}`, data);
+        this.fs.writeFileSync(`./src/database/${name}`, data);
     } 
 }
 

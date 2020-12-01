@@ -23,4 +23,4 @@ function Decoder(tree, text){
 
 }
 
-module.exports =  Decoder;
+module.exports = Decoder;
