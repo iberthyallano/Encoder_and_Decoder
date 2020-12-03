@@ -4,21 +4,6 @@
 
 <br>
 
-### Qual o problema?
-<p>
-  É 
-</p>
-
-<br>
-
-### O que é um codificador e um decodificador?
-<p>
-  É 
-</p>
-
-<br>
-
-
 ### Tecnologias utilizadas:
 O projeto foi desenvolvido com as seguintes tecnologias:
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
